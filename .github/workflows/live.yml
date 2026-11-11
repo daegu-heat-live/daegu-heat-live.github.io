@@ -1,5 +1,5 @@
 # 10분마다: 기상청 실황 수집 → 체감 더위 계산 → 웹 데이터 커밋 → GitHub Pages 재빌드 요청
-# Pages 설정: Settings → Pages → Source = 'Deploy from a branch', main / (root)
+# Pages Source 는 'GitHub Actions'(권장) 또는 'Deploy from a branch: main /(root)' 모두 동작
 # (루트 index.html 이 web/ 으로 이동시킴, .nojekyll 로 README 변환 방지)
 # 날짜가 바뀐 뒤 첫 실행에서 오늘 그림자(약 30분)를 계산한다.
 name: live-update
@@ -14,6 +14,7 @@ on:
 permissions:
   contents: write
   pages: write
+  id-token: write
 
 concurrency:
   group: live-update
@@ -23,6 +24,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    environment:
+      name: github-pages
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -50,8 +53,16 @@ jobs:
           git add web/data data/live
           git diff --cached --quiet || git commit -m "data: $(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M') KST"
           git push || (git pull --rebase && git push)
+      # Pages Source = 'GitHub Actions' 인 경우: web/ 을 사이트로 배포
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - uses: actions/deploy-pages@v4
+        continue-on-error: true
+      # Pages Source = 'Deploy from a branch' 인 경우: 재빌드 요청(루트 index.html → web/)
       - name: Request Pages rebuild
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -s -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${{ github.repository }}/pages/builds" || true
+          curl -s -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${{ github.repository }}/pages/builds" || true
