@@ -1,0 +1,16 @@
+geopandas==1.2.0
+shapely==2.2.0
+pyproj==3.8.0
+pandas==3.1.1
+numpy==2.5.4
+scipy==1.18.1
+rasterio==1.5.2
+pystac-client==0.9.1
+planetary-computer==1.0.0
+pvlib==0.16.1
+scikit-learn==1.9.1
+requests==2.34.2
+pyarrow==26.0.1
+pillow==13.0.0
+pytest==9.2.0
+pythermalcomfort==4.8.1

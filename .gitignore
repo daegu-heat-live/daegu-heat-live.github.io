@@ -1,0 +1,27 @@
+# 비밀값
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+logs_*.txt
+
+# 원본·중간 산출물은 용량이 커서 제외 (README의 재현 절차로 다시 만든다)
+data/raw/*
+data/processed/*
+# 단, GitHub Actions가 오늘 그림자를 계산하는 데 필요한 작은 파일은 포함(약 6 MB)
+!data/raw/osm/
+data/raw/osm/*
+!data/raw/osm/dongseongro_roads.gpkg
+!data/raw/osm/beomeo_roads.gpkg
+!data/processed/boundaries/
+data/processed/boundaries/*
+!data/processed/boundaries/daegu_gu_5179.gpkg
+!data/processed/buildings/
+data/processed/buildings/*
+!data/processed/buildings/dongseongro_buildings.gpkg
+!data/processed/buildings/beomeo_buildings.gpkg
+!data/processed/buildings/building_quality.json
+
+# 실시간 수집 기록은 포함(오늘 체감 계산에 필요), 로그·잠금 파일은 제외
+data/live/*.log
+data/live/*.lock

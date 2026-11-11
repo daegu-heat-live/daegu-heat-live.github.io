@@ -1,0 +1,43 @@
+{
+  "note": "GIS건물통합정보(V-World dsId=18) SHP 필드 매핑. AL_D010_27_20261109(대구, EPSG:5186)로 확인: A1 GIS건물통합식별번호, A9 용도명, A16 높이(m), A22 데이터기준일자, A24 건물명, A26 지상층수. 높이 0은 미기재로 간주.",
+  "official_shp_glob": "data/raw/buildings/**/*.shp",
+  "official_encoding": "cp949",
+  "id_fields": [
+    "A1",
+    "GIS_BULD_I",
+    "BULD_ID",
+    "UFID"
+  ],
+  "height_fields": [
+    "A16",
+    "HEIGHT",
+    "BLD_HGT",
+    "높이"
+  ],
+  "floors_fields": [
+    "A26",
+    "GRND_FLR",
+    "GRO_FLO_CO",
+    "지상층수"
+  ],
+  "name_fields": [
+    "A24",
+    "BULD_NM",
+    "BLD_NM",
+    "건물명"
+  ],
+  "use_fields": [
+    "A9",
+    "MAIN_PURPS",
+    "USABILITY",
+    "주용도"
+  ],
+  "date_fields": [
+    "A22",
+    "USEAPR_DAY",
+    "사용승인일"
+  ],
+  "assumed_floor_height_m": 3.3,
+  "assumed_floor_height_note": "층수×3.3 m는 최후 대안 추정치(용도별 층고 차이 미반영). height_status=estimated 로 분리 표기.",
+  "zero_height_is_missing": true
+}

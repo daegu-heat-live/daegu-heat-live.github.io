@@ -1,0 +1,355 @@
+{
+  "generated_by": "scripts/common.py",
+  "datasets": {
+    "D06_boundaries": {
+      "name": "대구 행정구역 경계(행정동·구군)",
+      "provider": "통계청 SGIS 행정동 경계(시점별 정리: vuski/admdongkor)",
+      "source_url": "https://raw.githubusercontent.com/vuski/admdongkor/master/ver20261001/HangJeongDong_ver20261001.geojson",
+      "license": "원본: 통계청 SGIS 공공누리; 정리본 저장소의 이용조건을 따름(README 참조)",
+      "valid_period": "20261001",
+      "crs": "원본 EPSG:4326 → 작업 EPSG:5179",
+      "fields": [
+        "adm_cd2",
+        "adm_nm",
+        "sgg",
+        "sggnm"
+      ],
+      "row_count": {
+        "dong": 150,
+        "gu": 9
+      },
+      "null_rate": 0.0,
+      "quality_note": "군위군(2023.7 편입) 포함. 웹용은 형상 단순화(구 20m, 동 10m).",
+      "version": "ver20261001",
+      "status": "ok",
+      "layer_kind": "reference",
+      "retrieved_at": "2026-11-11T05:07:48+00:00",
+      "updated_at": "2026-11-11T05:07:48+00:00"
+    },
+    "D04_weather": {
+      "name": "대구 시간별 기상관측(기온·이슬점·풍향풍속)",
+      "provider": "기상청 관측(WMO 국제교환) — NOAA NCEI ISD Global Hourly 경유",
+      "source_url": "https://www.ncei.noaa.gov/products/land-based-station/integrated-surface-database",
+      "download_pattern": "https://noaa-global-hourly-pds.s3.amazonaws.com/{year}/{st}.csv",
+      "license": "NOAA NCEI 공개자료(미국 정부 저작물, 이용 제한 없음). 원 관측: 기상청",
+      "observed_at": "2023-01-01T09:00:00+09:00 ~ 2025-08-25T06:00:00+09:00",
+      "crs": "EPSG:4326 (관측소 점)",
+      "fields": [
+        "station_id",
+        "station_name",
+        "hour_kst",
+        "observed_at_utc",
+        "report_type",
+        "air_temp_c",
+        "dewpoint_c",
+        "humidity_pct_derived",
+        "wind_speed_ms",
+        "wind_direction_deg",
+        "lat",
+        "lon"
+      ],
+      "row_count": 45181,
+      "null_rate": {
+        "47142_2023": 0.019,
+        "47142_2024": 0.0331,
+        "47142_2025": 0.0874,
+        "47143_2023": 0.0217,
+        "47143_2024": 0.0072,
+        "47143_2025": 0.0883
+      },
+      "quality_note": "ISD 품질코드 0/1/4/5만 채택. 습도는 파생값. ISD 관측소 좌표는 메타데이터 기준이며 기상청 지점정보의 현재 좌표와 다를 수 있음. 기상청 ASOS OpenAPI(인증키 필요)로 교체 가능.",
+      "version": "ISD v1 (S3 noaa-global-hourly-pds)",
+      "status": "ok",
+      "layer_kind": "observed",
+      "retrieved_at": "2026-11-11T05:08:58+00:00",
+      "updated_at": "2026-11-11T05:08:58+00:00"
+    },
+    "D05_landsat_lst": {
+      "name": "Landsat 8/9 Collection 2 Level-2 지표면온도",
+      "provider": "USGS (Microsoft Planetary Computer 미러 경유)",
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "access_url": "https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2",
+      "license": "USGS Landsat 자료: 공개(public domain), 출처 표기 권장",
+      "observed_at": [
+        "2023-06-02T10:58+09:00",
+        "2024-06-12T10:58+09:00",
+        "2024-06-28T10:58+09:00",
+        "2024-08-23T10:58+09:00",
+        "2024-08-31T10:58+09:00",
+        "2025-06-07T10:58+09:00",
+        "2025-06-23T10:58+09:00",
+        "2025-07-09T10:58+09:00",
+        "2025-07-25T10:58+09:00"
+      ],
+      "crs": "원본 UTM 52N → EPSG:32652 30m 격자(대구 고정 격자)",
+      "fields": [
+        "ST_B10(lwir11)",
+        "QA_PIXEL"
+      ],
+      "row_count": {
+        "scenes_kept": 9,
+        "scenes_rejected": 18
+      },
+      "null_rate": {
+        "2023-06-02": 0.086,
+        "2024-06-12": 0.05,
+        "2024-06-28": 0.095,
+        "2024-08-23": 0.182,
+        "2024-08-31": 0.117,
+        "2025-06-07": 0.168,
+        "2025-06-23": 0.102,
+        "2025-07-09": 0.052,
+        "2025-07-25": 0.069
+      },
+      "quality_note": "QA 비트 (0, 1, 2, 3, 4, 5) 제거, 대구 내 유효픽셀 80% 미만 장면 제외. 열적외 원 해상도 100m(30m로 재표본 제공). 지표면온도이며 기온 아님.",
+      "version": "Collection 2 Level-2",
+      "status": "ok",
+      "layer_kind": "observed",
+      "retrieved_at": "2026-11-11T05:17:32+00:00",
+      "updated_at": "2026-11-11T05:17:32+00:00"
+    },
+    "D13_osm": {
+      "name": "OpenStreetMap 건물 윤곽·도로·수목점·공원",
+      "provider": "OpenStreetMap contributors (Overpass API)",
+      "source_url": "https://www.openstreetmap.org/",
+      "license": "ODbL 1.0 — 출처표시 ‘© OpenStreetMap contributors’ 및 동일조건 공유 의무",
+      "crs": "EPSG:4326",
+      "fields": [
+        "building",
+        "name",
+        "height",
+        "building:levels",
+        "highway",
+        "footway",
+        "sidewalk",
+        "natural",
+        "species",
+        "genus",
+        "leisure",
+        "landuse",
+        "circumference",
+        "height:tree",
+        "diameter_crown"
+      ],
+      "row_count": {
+        "dongseongro": {
+          "buildings": 3092,
+          "roads": 717,
+          "trees": 0
+        },
+        "beomeo": {
+          "buildings": 2160,
+          "roads": 928,
+          "trees": 24
+        },
+        "daegu": {
+          "parks": 996,
+          "buildings": 52368,
+          "trees": 284
+        }
+      },
+      "quality_note": "자원봉사 기반으로 대구 건물 수록이 불완전(전역 약 5.2만 동). 높이·층수 태그 보유율 낮음. 수목 점은 극소수. 건물 높이·가로수의 공식 원본 대체 아님.",
+      "version": "2026-11-11",
+      "status": "ok",
+      "layer_kind": "reference",
+      "retrieved_at": "2026-11-11T05:24:07+00:00",
+      "updated_at": "2026-11-11T05:24:07+00:00"
+    },
+    "D01_buildings": {
+      "name": "시범 구역 건물 형상·높이",
+      "provider": "국토부 GIS건물통합정보",
+      "source_url": "https://www.data.go.kr/data/15083092/fileData.do",
+      "download_url": "https://www.vworld.kr/dtmk/dtmk_ntads_s002.do?svcCde=NA&dsId=18",
+      "license": "GIS건물통합정보: 공공누리 제1유형(출처표시) / OSM: ODbL 1.0",
+      "crs": "EPSG:5179",
+      "fields": [
+        "building_id",
+        "height_m",
+        "height_status",
+        "height_source",
+        "height_confidence",
+        "height_imputed"
+      ],
+      "row_count": {
+        "dongseongro": 3142,
+        "beomeo": 2124,
+        "daegu_all": 382695
+      },
+      "null_rate": {
+        "dongseongro": 0.199,
+        "beomeo": 0.152,
+        "daegu_all_no_height_no_floors": 0.338
+      },
+      "quality_note": "공식 SHP는 V-World 로그인 후 다운로드 필요(자동 수집 불가). 미확보 시 OSM 윤곽+층수 추정으로 임시 계산하며 UI에 ‘임시·추정’으로 표기. 높이 미확인 건물은 그림자 계산 제외.",
+      "status": "official",
+      "layer_kind": "reference",
+      "retrieved_at": "2026-11-11T05:25:08+00:00",
+      "updated_at": "2026-11-11T06:15:05+00:00",
+      "valid_period": "2026-11-06 (A22 데이터기준일자)"
+    },
+    "S01_building_shadows": {
+      "name": "시범 구역 건물 예상 그림자(기하학적 시뮬레이션)",
+      "provider": "본 프로젝트 계산 (NOAA 태양위치 자체 구현 + Shapely)",
+      "source_url": "scripts/shadows/build_aoi_shadows.py",
+      "license": "본 프로젝트 산출물(입력 데이터 라이선스 승계)",
+      "valid_period": [
+        "2025-06-21",
+        "2025-07-09",
+        "2025-07-25",
+        "2025-08-15"
+      ],
+      "crs": "계산 EPSG:5179, 배포 EPSG:4326",
+      "row_count": {
+        "dongseongro": 5,
+        "beomeo": 5
+      },
+      "quality_note": "평탄 지면·불투명 각기둥 가정. 높이 미확인 건물 제외로 그늘 과소 추정(하한).",
+      "version": "shapely-flat-v1",
+      "status": "ok",
+      "layer_kind": "simulation",
+      "retrieved_at": "2026-11-11T05:32:28+00:00",
+      "updated_at": "2026-11-11T07:38:11+00:00"
+    },
+    "D07_trees": {
+      "name": "가로수 위치(임시: OSM natural=tree) — 산림청 가로수 현황 적용 대기",
+      "provider": "OpenStreetMap contributors",
+      "source_url": "https://www.data.go.kr/data/15120900/fileData.do",
+      "license": "OSM ODbL 1.0 (산림청 자료 확보 시 공공누리 조건 적용)",
+      "crs": "EPSG:4326",
+      "row_count": {
+        "trees": 279,
+        "with_height": 0,
+        "with_crown": 0
+      },
+      "quality_note": "산림청 가로수 CSV는 공공데이터포털 로그인 후 다운로드 필요. OSM 수목점은 대구 전역 극소수로 분포 분석에 부적합. 수고·수관폭 보유 거의 없음 → tree_shadow_mode = disabled.",
+      "status": "interim_osm",
+      "layer_kind": "reference",
+      "tree_shadow_mode": "disabled",
+      "retrieved_at": "2026-11-11T05:34:53+00:00",
+      "updated_at": "2026-11-11T05:34:53+00:00"
+    },
+    "D09_parks": {
+      "name": "공원 폴리곤(임시: OSM leisure=park) — 대구 도시공원 공간정보 적용 대기",
+      "provider": "OpenStreetMap contributors",
+      "source_url": "https://www.data.go.kr/data/15117091/fileData.do",
+      "license": "OSM ODbL 1.0",
+      "crs": "EPSG:4326",
+      "row_count": 738,
+      "quality_note": "OSM 공원 경계는 공식 도시공원 결정 구역과 다를 수 있음.",
+      "status": "interim_osm",
+      "layer_kind": "reference",
+      "retrieved_at": "2026-11-11T05:34:53+00:00",
+      "updated_at": "2026-11-11T05:34:53+00:00"
+    },
+    "D11_sentinel2": {
+      "name": "Sentinel-2 L2A 분광지수(NDVI·NDBI·MNDWI)",
+      "provider": "ESA Copernicus (Microsoft Planetary Computer 미러)",
+      "source_url": "https://browser.dataspace.copernicus.eu/",
+      "access_url": "https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a",
+      "license": "Copernicus Sentinel data — 무료·개방, 출처표시 ‘Contains modified Copernicus Sentinel data 2025’",
+      "observed_at": "2025-07-09",
+      "crs": "UTM 52N 30 m 격자(10 m 평균 재표본)",
+      "fields": [
+        "B03",
+        "B04",
+        "B08",
+        "B11",
+        "SCL"
+      ],
+      "row_count": {
+        "scenes": 2
+      },
+      "null_rate": 0.0005,
+      "quality_note": "SCL 0,1,3,8,9,10,11 제거. 열적외 없음(온도 아님).",
+      "version": "L2A",
+      "status": "ok",
+      "layer_kind": "observed",
+      "retrieved_at": "2026-11-11T05:35:19+00:00",
+      "updated_at": "2026-11-11T05:41:17+00:00"
+    },
+    "D12_dem": {
+      "name": "Copernicus DEM GLO-30 (국토정보플랫폼 DEM 대체)",
+      "provider": "ESA / Airbus (Microsoft Planetary Computer 미러)",
+      "source_url": "https://planetarycomputer.microsoft.com/dataset/cop-dem-glo-30",
+      "license": "Copernicus DEM GLO-30 라이선스(무료, 출처표시)",
+      "crs": "UTM 52N 30 m 격자",
+      "row_count": {
+        "tiles": 2
+      },
+      "quality_note": "그림자 엔진에는 미사용(평탄 지면 가정). AI 모델 공변량(고도)으로만 사용.",
+      "version": "GLO-30",
+      "status": "ok",
+      "layer_kind": "reference",
+      "retrieved_at": "2026-11-11T05:35:19+00:00",
+      "updated_at": "2026-11-11T05:41:17+00:00"
+    },
+    "A01_lst_model": {
+      "name": "ΔLST 공간패턴 예측 모델(랜덤포레스트, 공간 블록 CV)",
+      "provider": "본 프로젝트 분석",
+      "source_url": "scripts/analysis/lst_model.py",
+      "license": "본 프로젝트 산출물",
+      "observed_at": "2025-07-25",
+      "crs": "UTM 52N 240 m 격자",
+      "row_count": {
+        "cells": 23344
+      },
+      "quality_note": "예측(관측 아님). 상관 기반 설명이며 인과 해석 금지.",
+      "version": "rf-v1",
+      "status": "ok",
+      "layer_kind": "prediction",
+      "retrieved_at": "2026-11-11T05:37:26+00:00",
+      "updated_at": "2026-11-11T05:42:54+00:00"
+    },
+    "A02_heat_days": {
+      "name": "연도별 폭염일·열대야(관측소 시간별 자료 근사)",
+      "provider": "본 프로젝트 집계(원자료 D04)",
+      "source_url": "scripts/analysis/heat_days.py",
+      "license": "본 프로젝트 산출물",
+      "crs": "-",
+      "quality_note": "정시 관측 기반 근사, 결측일 제외. 기상청 공식 통계와 다를 수 있음. 2025년은 8/25까지.",
+      "status": "ok",
+      "layer_kind": "observed",
+      "retrieved_at": "2026-11-11T07:03:54+00:00",
+      "updated_at": "2026-11-11T07:04:04+00:00"
+    },
+    "WX02_WX03_kma_ultrashort": {
+      "name": "기상청 초단기실황(지금 날씨)·초단기예보(구름 상태)",
+      "provider": "기상청 (공공데이터포털 단기예보 조회서비스)",
+      "source_url": "https://www.data.go.kr/data/15084084/openapi.do",
+      "license": "공공데이터포털 이용허락범위(출처표시)",
+      "crs": "기상청 5 km LCC 격자 → 격자중심 위경도",
+      "observed_at": "2026-11-11T17:00:00+09:00",
+      "fields": [
+        "T1H",
+        "REH",
+        "WSD",
+        "VEC",
+        "RN1",
+        "PTY",
+        "SKY"
+      ],
+      "row_count": {
+        "grids": 9,
+        "unique_grids": 8
+      },
+      "quality_note": "구·군 대표 격자값(관측소 실측 아님). 발표시각은 응답 baseDate/baseTime 기준. 결측(-998.9 등)은 null.",
+      "status": "ok",
+      "layer_kind": "observed",
+      "retrieved_at": "2026-11-11T07:10:25+00:00",
+      "updated_at": "2026-11-11T09:11:33+00:00"
+    },
+    "M01_utci": {
+      "name": "시범구역 일조/그늘 UTCI(물리 모델 추정)",
+      "provider": "본 프로젝트 계산",
+      "source_url": "scripts/comfort/utci_model.py",
+      "license": "본 프로젝트 산출물(입력 데이터 라이선스 승계)",
+      "crs": "-",
+      "quality_note": "모의값. MRT·UTCI 실측 검증 자료 없음(미검증 추정). 가정: 장파복사: 주변 표면 온도 = 기온 가정(달궈진 포장·벽면 미반영 → 일조 UTCI 과소 가능) / 일사: Haurwitz 맑은하늘 × Kasten–Czeplak 운량 보정, Erbs 직달·산란 분리(일사 실측 아님) / ΔMRT: SolarCal(서 있는 사람, 흡수율 0.7, 지면 반사율 0.2(그늘은 0), 하늘 시야 100%, 보행 방향 5방향 평균) / SolarCal은 산란일사를 직달일사로부터 추정하므로 흐린 날 산란일사 효과를 과소 반영할 수 있음 / 풍속: 기상청 10 m 풍속을 UTCI 기준 높이(10 m) 그대로 사용, 0.5~17 m/s 범위로 제한 / 그늘: 건물 그림자 기하 모의(수목·차양 미반영)",
+      "version": "utci-solarcal-v1",
+      "status": "ok",
+      "layer_kind": "simulation",
+      "retrieved_at": "2026-11-11T07:34:35+00:00",
+      "updated_at": "2026-11-11T09:11:33+00:00"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+# 10분마다: 기상청 실황 수집 → 체감 더위 계산 → 웹 데이터 커밋 → GitHub Pages 배포
+# 날짜가 바뀐 뒤 첫 실행에서 오늘 그림자(약 30분)를 계산한다.
+name: live-update
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # GitHub 사정으로 실제 실행은 수 분 늦을 수 있음
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["web/**", "scripts/**", ".github/workflows/**"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: live-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Today's shadows (once a day)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python -c "from scripts.live.daily_shadows import ready, today; import sys; sys.exit(0 if ready(today()) else 1)" \
+            || python -m scripts.live.daily_shadows
+      - name: Collect KMA nowcast/forecast + comfort
+        env:
+          PYTHONIOENCODING: utf-8
+          DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
+        run: python -m scripts.live.collect
+      - name: Commit data
+        run: |
+          python -m scripts.live.prune_archive
+          git config user.name "heat-live-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add web/data data/live
+          git diff --cached --quiet || git commit -m "data: $(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M') KST"
+          git push || (git pull --rebase && git push)
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deploy
+        uses: actions/deploy-pages@v4

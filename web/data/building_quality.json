@@ -1,0 +1,78 @@
+{
+  "dongseongro": {
+    "aoi": "dongseongro",
+    "mode": "official",
+    "n_buildings_in_aoi": 3142,
+    "n_buildings_with_buffer": 6416,
+    "dropped_invalid_or_tiny": 200,
+    "dropped_duplicates": 0,
+    "status_counts": {
+      "estimated": 1585,
+      "registry": 931,
+      "missing": 625,
+      "invalid": 1
+    },
+    "pct": {
+      "estimated": 50.4,
+      "registry": 29.6,
+      "missing": 19.9,
+      "invalid": 0.0
+    },
+    "footprint_area_pct_with_height": 89.5,
+    "assumed_floor_height_m": 3.3,
+    "official_meta": {
+      "files": [
+        "C:\\Users\\bewis\\AppData\\Roaming\\Claude\\scratch-workspaces\\78d34c19-e33c-4473-b5a5-51b33b925011\\2c7a333a-dd2e-4a29-935e-f429dec867ce\\scratch-2026-11-11-32d5d6\\daegu-heat-atlas\\data\\raw\\buildings\\AL_D010_27_20261109.shp"
+      ],
+      "fields": {
+        "id": "A1",
+        "height": "A16",
+        "floors": "A26"
+      }
+    }
+  },
+  "beomeo": {
+    "aoi": "beomeo",
+    "mode": "official",
+    "n_buildings_in_aoi": 2124,
+    "n_buildings_with_buffer": 5296,
+    "dropped_invalid_or_tiny": 36,
+    "dropped_duplicates": 1,
+    "status_counts": {
+      "registry": 1154,
+      "estimated": 646,
+      "missing": 323,
+      "invalid": 1
+    },
+    "pct": {
+      "registry": 54.3,
+      "estimated": 30.4,
+      "missing": 15.2,
+      "invalid": 0.0
+    },
+    "footprint_area_pct_with_height": 91.2,
+    "assumed_floor_height_m": 3.3,
+    "official_meta": {
+      "files": [
+        "C:\\Users\\bewis\\AppData\\Roaming\\Claude\\scratch-workspaces\\78d34c19-e33c-4473-b5a5-51b33b925011\\2c7a333a-dd2e-4a29-935e-f429dec867ce\\scratch-2026-11-11-32d5d6\\daegu-heat-atlas\\data\\raw\\buildings\\AL_D010_27_20261109.shp"
+      ],
+      "fields": {
+        "id": "A1",
+        "height": "A16",
+        "floors": "A26"
+      }
+    }
+  },
+  "_daegu_all": {
+    "n_buildings": 382695,
+    "pct_registry_height": 46.9,
+    "pct_floors_only_estimated": 19.3,
+    "pct_invalid": 0.04,
+    "n_invalid": 156,
+    "invalid_rule": "0 초과·600 m 이하, 층당 1.5~15.0 m(층수 있을 때) 벗어나면 비정상",
+    "pct_missing": 33.8,
+    "height_p50_m": 7.7,
+    "height_p99_m": 46.1,
+    "height_max_m": 139.0
+  }
+}

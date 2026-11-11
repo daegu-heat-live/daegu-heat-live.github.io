@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.gpkg binary
+*.png binary
+*.docx binary
