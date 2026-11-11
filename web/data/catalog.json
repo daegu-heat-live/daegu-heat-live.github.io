@@ -336,7 +336,7 @@
       "status": "ok",
       "layer_kind": "observed",
       "retrieved_at": "2026-11-11T07:10:25+00:00",
-      "updated_at": "2026-11-11T10:42:30+00:00"
+      "updated_at": "2026-11-11T10:50:37+00:00"
     },
     "M01_utci": {
       "name": "시범구역 일조/그늘 UTCI(물리 모델 추정)",
@@ -349,7 +349,7 @@
       "status": "ok",
       "layer_kind": "simulation",
       "retrieved_at": "2026-11-11T07:34:35+00:00",
-      "updated_at": "2026-11-11T10:42:30+00:00"
+      "updated_at": "2026-11-11T10:50:37+00:00"
     }
   }
 }
