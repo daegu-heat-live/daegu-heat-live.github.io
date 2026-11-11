@@ -1,4 +1,6 @@
-# 10분마다: 기상청 실황 수집 → 체감 더위 계산 → 웹 데이터 커밋 → GitHub Pages 배포
+# 10분마다: 기상청 실황 수집 → 체감 더위 계산 → 웹 데이터 커밋 → GitHub Pages 재빌드 요청
+# Pages 설정: Settings → Pages → Source = 'Deploy from a branch', main / (root)
+# (루트 index.html 이 web/ 으로 이동시킴, .nojekyll 로 README 변환 방지)
 # 날짜가 바뀐 뒤 첫 실행에서 오늘 그림자(약 30분)를 계산한다.
 name: live-update
 
@@ -12,7 +14,6 @@ on:
 permissions:
   contents: write
   pages: write
-  id-token: write
 
 concurrency:
   group: live-update
@@ -22,9 +23,6 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -52,8 +50,8 @@ jobs:
           git add web/data data/live
           git diff --cached --quiet || git commit -m "data: $(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M') KST"
           git push || (git pull --rebase && git push)
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: web
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      - name: Request Pages rebuild
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -s -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${{ github.repository }}/pages/builds" || true
