@@ -25,3 +25,4 @@ data/processed/buildings/*
 # 실시간 수집 기록은 포함(오늘 체감 계산에 필요), 로그·잠금 파일은 제외
 data/live/*.log
 data/live/*.lock
+.claude/
