@@ -7,8 +7,7 @@ on:
     - cron: "*/10 * * * *"   # GitHub 사정으로 실제 실행은 수 분 늦을 수 있음
   workflow_dispatch: {}
   push:
-    branches: [main]
-    paths: ["web/**", "scripts/**", ".github/workflows/**"]
+    branches: [main]   # 봇(GITHUB_TOKEN) 커밋은 워크플로를 다시 부르지 않음
 
 permissions:
   contents: write
