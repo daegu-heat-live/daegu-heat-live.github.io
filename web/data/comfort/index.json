@@ -10,13 +10,13 @@
   ],
   "items": {
     "dongseongro_2026-11-12": {
-      "max_delta": 4.9,
-      "n_ok": 12,
+      "max_delta": 9.9,
+      "n_ok": 14,
       "n": 29
     },
     "beomeo_2026-11-12": {
-      "max_delta": 4.9,
-      "n_ok": 12,
+      "max_delta": 9.9,
+      "n_ok": 14,
       "n": 29
     }
   }
