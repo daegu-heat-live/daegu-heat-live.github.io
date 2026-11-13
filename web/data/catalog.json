@@ -318,7 +318,7 @@
       "source_url": "https://www.data.go.kr/data/15084084/openapi.do",
       "license": "공공데이터포털 이용허락범위(출처표시)",
       "crs": "기상청 5 km LCC 격자 → 격자중심 위경도",
-      "observed_at": "2026-11-13T09:00:00+09:00",
+      "observed_at": "2026-11-13T17:00:00+09:00",
       "fields": [
         "T1H",
         "REH",
@@ -336,7 +336,7 @@
       "status": "ok",
       "layer_kind": "observed",
       "retrieved_at": "2026-11-11T07:10:25+00:00",
-      "updated_at": "2026-11-13T01:32:25+00:00"
+      "updated_at": "2026-11-13T08:45:18+00:00"
     },
     "M01_utci": {
       "name": "시범구역 일조/그늘 UTCI(물리 모델 추정)",
@@ -349,7 +349,7 @@
       "status": "ok",
       "layer_kind": "simulation",
       "retrieved_at": "2026-11-11T07:34:35+00:00",
-      "updated_at": "2026-11-13T01:32:25+00:00"
+      "updated_at": "2026-11-13T08:45:18+00:00"
     }
   }
 }
