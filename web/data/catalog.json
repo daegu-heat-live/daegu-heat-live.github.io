@@ -200,15 +200,15 @@
       ],
       "crs": "계산 EPSG:5179, 배포 EPSG:4326",
       "row_count": {
-        "dongseongro": 8,
-        "beomeo": 8
+        "dongseongro": 5,
+        "beomeo": 5
       },
       "quality_note": "평탄 지면·불투명 각기둥 가정. 높이 미확인 건물 제외로 그늘 과소 추정(하한).",
       "version": "shapely-flat-v1",
       "status": "ok",
       "layer_kind": "simulation",
       "retrieved_at": "2026-11-11T05:32:28+00:00",
-      "updated_at": "2026-11-13T16:50:56+00:00"
+      "updated_at": "2026-11-11T07:38:11+00:00"
     },
     "D07_trees": {
       "name": "가로수 위치(임시: OSM natural=tree) — 산림청 가로수 현황 적용 대기",
@@ -318,7 +318,7 @@
       "source_url": "https://www.data.go.kr/data/15084084/openapi.do",
       "license": "공공데이터포털 이용허락범위(출처표시)",
       "crs": "기상청 5 km LCC 격자 → 격자중심 위경도",
-      "observed_at": "2026-11-14T01:00:00+09:00",
+      "observed_at": "2026-11-14T06:00:00+09:00",
       "fields": [
         "T1H",
         "REH",
@@ -336,7 +336,7 @@
       "status": "ok",
       "layer_kind": "observed",
       "retrieved_at": "2026-11-11T07:10:25+00:00",
-      "updated_at": "2026-11-13T16:51:26+00:00"
+      "updated_at": "2026-11-13T22:16:30+00:00"
     },
     "M01_utci": {
       "name": "시범구역 일조/그늘 UTCI(물리 모델 추정)",
@@ -349,7 +349,7 @@
       "status": "ok",
       "layer_kind": "simulation",
       "retrieved_at": "2026-11-11T07:34:35+00:00",
-      "updated_at": "2026-11-13T16:51:26+00:00"
+      "updated_at": "2026-11-13T22:16:30+00:00"
     }
   }
 }
