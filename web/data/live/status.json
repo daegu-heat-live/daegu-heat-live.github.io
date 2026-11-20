@@ -1,5 +1,5 @@
 {
-  "checked_at_kst": "2026-11-21T02:24:56+09:00",
+  "checked_at_kst": "2026-11-21T08:16:54+09:00",
   "key_configured": true,
   "source": "기상청 단기예보 조회서비스(공공데이터포털)",
   "source_url": "https://www.data.go.kr/data/15084084/openapi.do",
@@ -8,17 +8,17 @@
       "ok": true,
       "errors": [],
       "new": true,
-      "base_at_kst": "2026-11-21T01:00:00+09:00",
-      "received_at_utc": "2026-11-20T17:24:56+00:00",
-      "lag_min": 85
+      "base_at_kst": "2026-11-21T07:00:00+09:00",
+      "received_at_utc": "2026-11-20T23:16:54+00:00",
+      "lag_min": 77
     },
     "fcst": {
       "ok": true,
       "errors": [],
       "new": true,
-      "base_at_kst": "2026-11-21T01:00:00+09:00",
-      "received_at_utc": "2026-11-20T17:24:56+00:00",
-      "lag_min": 85
+      "base_at_kst": "2026-11-21T07:00:00+09:00",
+      "received_at_utc": "2026-11-20T23:16:54+00:00",
+      "lag_min": 77
     }
   },
   "daily_shadows": "ready"
