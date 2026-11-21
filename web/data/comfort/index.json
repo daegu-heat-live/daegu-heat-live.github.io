@@ -9,14 +9,14 @@
     "그늘: 건물 그림자 기하 모의(수목·차양 미반영)"
   ],
   "items": {
-    "dongseongro_2026-11-21": {
-      "max_delta": 11.4,
-      "n_ok": 6,
+    "dongseongro_2026-11-22": {
+      "max_delta": 10.8,
+      "n_ok": 9,
       "n": 29
     },
-    "beomeo_2026-11-21": {
-      "max_delta": 11.4,
-      "n_ok": 6,
+    "beomeo_2026-11-22": {
+      "max_delta": 10.8,
+      "n_ok": 9,
       "n": 29
     }
   }
