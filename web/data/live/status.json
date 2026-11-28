@@ -1,5 +1,5 @@
 {
-  "checked_at_kst": "2026-11-28T12:29:33+09:00",
+  "checked_at_kst": "2026-11-28T21:14:55+09:00",
   "key_configured": true,
   "source": "기상청 단기예보 조회서비스(공공데이터포털)",
   "source_url": "https://www.data.go.kr/data/15084084/openapi.do",
@@ -8,17 +8,16 @@
       "ok": true,
       "errors": [],
       "new": true,
-      "base_at_kst": "2026-11-28T11:00:00+09:00",
-      "received_at_utc": "2026-11-28T03:29:33+00:00",
-      "lag_min": 90
+      "base_at_kst": "2026-11-28T20:00:00+09:00",
+      "received_at_utc": "2026-11-28T12:14:56+00:00",
+      "lag_min": 75
     },
     "fcst": {
-      "ok": true,
-      "errors": [],
-      "new": true,
-      "base_at_kst": "2026-11-28T11:00:00+09:00",
-      "received_at_utc": "2026-11-28T03:29:33+00:00",
-      "lag_min": 90
+      "ok": false,
+      "errors": [
+        "달서구: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Read timed out. (read timeout=20)"
+      ],
+      "last_ok_base_at_kst": "2026-11-28T11:00:00+09:00"
     }
   },
   "daily_shadows": "ready"
